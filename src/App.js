@@ -1,334 +1,159 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "./components/ui/button";
-import { Card, CardContent } from "./components/ui/card";
 import { Badge } from "./components/ui/badge";
-
-import { 
-  Sparkles, 
-  Zap, 
-  Brain, 
-  Globe, 
-  Clock, 
-  TrendingUp,
+import {
+  Sparkles,
+  Rocket,
+  Hourglass,
   ArrowRight,
-  PlayCircle,
   Star,
   Users,
   Shield,
-  Smartphone
+  Globe,
+  Brain
 } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function Landing() {
-  const [isVisible, setIsVisible] = useState(false);
+export default function ComingSoon() {
+  const [daysRemaining, setDaysRemaining] = useState(0);
 
   useEffect(() => {
-    setIsVisible(true);
+    const launchDate = new Date("2025-10-01T00:00:00");
+    const now = new Date();
+    const diffTime = launchDate - now;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    setDaysRemaining(diffDays);
   }, []);
 
-  const features = [
-    {
-      icon: Brain,
-      title: "AI-Powered Curation",
-      description: "Our advanced algorithms analyze thousands of sources to bring you the most relevant AI developments",
-      color: "from-blue-500 to-cyan-500"
-    },
-    {
-      icon: Zap,
-      title: "Real-Time Updates",
-      description: "Get instant notifications about breaking AI news, research breakthroughs, and industry shifts",
-      color: "from-purple-500 to-pink-500"
-    },
-    {
-      icon: Globe,
-      title: "Global Coverage",
-      description: "Comprehensive coverage from leading AI research labs, tech companies, and academic institutions worldwide",
-      color: "from-emerald-500 to-teal-500"
-    }
-  ];
-
-  const stats = [
-    { number: "50K+", label: "Daily Readers" },
-    { number: "1000+", label: "AI Sources" },
-    { number: "24/7", label: "Live Updates" },
-    { number: "95%", label: "Accuracy Rate" }
-  ];
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white overflow-x-hidden">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800/50">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="flex items-center space-x-2"
-            >
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center">
-                <Brain className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-                Briefly News
-              </span>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="hidden md:flex items-center space-x-8"
-            >
-              <a href="#features" className="text-slate-300 hover:text-white transition-colors">Features</a>
-              <a href="#about" className="text-slate-300 hover:text-white transition-colors">About</a>
-              <Button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white border-0">
-                Get Started
-              </Button>
-            </motion.div>
-          </div>
-        </div>
-      </nav>
-
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 relative">
-        <div className="max-w-7xl mx-auto text-center relative">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <Badge className="mb-6 bg-blue-500/10 text-blue-400 border-blue-500/20 px-4 py-2">
-              <Sparkles className="w-4 h-4 mr-2" />
-              The Future of AI News is Here
-            </Badge>
-            
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
-              Stay Ahead of the
-              <br />
-              <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-400 bg-clip-text text-transparent">
-                AI Revolution
-              </span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Get personalized AI news, breakthrough research, and industry insights 
-              delivered to you by our intelligent curation system.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button size="lg" className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-8 py-4 text-lg">
-                Start Reading Today
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-slate-600 text-slate-300 hover:text-white hover:border-slate-500 px-8 py-4 text-lg">
-                <PlayCircle className="w-5 h-5 mr-2" />
-                Watch Demo
-              </Button>
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white flex flex-col">
+      {/* Header */}
+      <header className="py-6 px-6 border-b border-slate-800 bg-slate-950/90 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <div className="w-7 h-7 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center">
+              <Brain className="w-4 h-4 text-white" />
             </div>
-          </motion.div>
-
-          {/* Floating Elements */}
-          <div className="absolute top-20 left-10 w-20 h-20 bg-blue-500/10 rounded-full blur-xl"></div>
-          <div className="absolute top-40 right-20 w-32 h-32 bg-purple-500/10 rounded-full blur-xl"></div>
-          <div className="absolute bottom-20 left-20 w-16 h-16 bg-cyan-500/10 rounded-full blur-xl"></div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-16 px-6 bg-slate-900/50">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-slate-400">{stat.label}</div>
-              </motion.div>
-            ))}
+            <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+              Briefly
+            </span>
           </div>
         </div>
-      </section>
+      </header>
 
-      {/* Features Section */}
-      <section id="features" className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Powered by
-              <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-                {" "}Advanced AI
-              </span>
-            </h2>
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-              Our intelligent platform transforms how you discover and consume AI news
-            </p>
-          </motion.div>
+      {/* Hero */}
+      <main className="flex-grow flex flex-col justify-center items-center text-center px-6 py-24">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <Badge className="mb-6 bg-blue-500/10 text-blue-400 border-blue-500/20 px-4 py-2">
+            <Sparkles className="w-4 h-4 mr-2" />
+            A Smarter Feed is Coming
+          </Badge>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-              >
-                <Card className="bg-slate-800/50 border-slate-700/50 hover:border-slate-600/50 transition-all duration-300 group hover:transform hover:scale-105">
-                  <CardContent className="p-8">
-                    <div className={`w-12 h-12 bg-gradient-to-r ${feature.color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                      <feature.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="text-xl font-bold mb-4 text-white">{feature.title}</h3>
-                    <p className="text-slate-300 leading-relaxed">{feature.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+          <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
+            The News, 
+            <br />
+            <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-400 bg-clip-text text-transparent">
+              Without the Noise
+            </span>
+          </h1>
 
-      {/* Benefits Section */}
-      <section className="py-20 px-6 bg-gradient-to-r from-slate-900/50 to-slate-800/50">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-4xl font-bold mb-6">
-                Why Choose
-                <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-                  {" "}Briefly News?
-                </span>
-              </h2>
-              <p className="text-xl text-slate-300 mb-8">
-                Don't get lost in the noise. Our AI-powered platform delivers exactly what you need to know.
-              </p>
-              
-              <div className="space-y-6">
-                {[
-                  { icon: Clock, text: "Save 90% of your research time" },
-                  { icon: TrendingUp, text: "Track emerging AI trends before they go mainstream" },
-                  { icon: Shield, text: "Verified sources and fact-checked content" },
-                  { icon: Smartphone, text: "Perfect mobile experience for reading on-the-go" }
-                ].map((item, index) => (
-                  <div key={index} className="flex items-center space-x-4">
-                    <div className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                      <item.icon className="w-4 h-4 text-blue-400" />
-                    </div>
-                    <span className="text-slate-200">{item.text}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+          <p className="text-xl md:text-2xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Briefly is your intelligent news companion — delivering fast, bias-aware summaries of politics, technology, business, science, and more.
+          </p>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-400">Today's AI Digest</span>
-                    <Badge className="bg-green-500/20 text-green-400">Live</Badge>
-                  </div>
-                  <div className="space-y-3">
-                    {[
-                      "OpenAI announces breakthrough in reasoning models",
-                      "Google's new AI chip outperforms competitors by 40%",
-                      "MIT researchers solve AI alignment challenge"
-                    ].map((headline, index) => (
-                      <div key={index} className="p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
-                        <div className="flex items-start space-x-3">
-                          <div className="w-2 h-2 bg-blue-400 rounded-full mt-2"></div>
-                          <span className="text-slate-200 text-sm">{headline}</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+          <Button size="lg" className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-8 py-4 text-lg">
+            Join Early Access <ArrowRight className="w-5 h-5 ml-2" />
+          </Button>
 
-      {/* CTA Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready to Transform
-              <br />
-              <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-                Your AI Knowledge?
-              </span>
-            </h2>
-            <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-              Join thousands of professionals who trust AI News to keep them informed about the latest developments in artificial intelligence.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button size="lg" className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-12 py-4 text-lg">
-                Get Started Free
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+          {/* Countdown */}
+          <div className="mt-12 text-center">
+            <h2 className="text-lg text-slate-400 mb-2">Launching in</h2>
+            <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+              {daysRemaining} Days
             </div>
-            
-            <div className="flex items-center justify-center mt-8 space-x-6 text-slate-400">
-              <div className="flex items-center space-x-1">
-                <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                <span className="text-sm">4.9/5 rating</span>
-              </div>
-              <div className="flex items-center space-x-1">
-                <Users className="w-4 h-4" />
-                <span className="text-sm">50,000+ users</span>
-              </div>
-              <div className="flex items-center space-x-1">
-                <Shield className="w-4 h-4" />
-                <span className="text-sm">Privacy first</span>
-              </div>
+          </div>
+
+          <div className="mt-16 text-slate-400 space-y-3">
+            <div className="flex justify-center items-center space-x-2">
+              <Rocket className="w-5 h-5 text-blue-400" />
+              <span>Smart digest across every topic that matters</span>
             </div>
-          </motion.div>
+            <div className="flex justify-center items-center space-x-2">
+              <Hourglass className="w-5 h-5 text-cyan-400" />
+              <span>Launching Fall 2025</span>
+            </div>
+          </div>
+        </motion.div>
+      </main>
+
+      {/* Value Highlights */}
+      <section className="bg-slate-900/60 py-14 px-6">
+        <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+          <div>
+            <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+              ⏱️ 60 sec
+            </div>
+            <div className="text-slate-400 text-sm mt-1">to catch up on global headlines</div>
+          </div>
+          <div>
+            <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+              🧠 AI-curated
+            </div>
+            <div className="text-slate-400 text-sm mt-1">so you don’t scroll endlessly</div>
+          </div>
+          <div>
+            <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+              🔍 Bias-aware
+            </div>
+            <div className="text-slate-400 text-sm mt-1">left, right, and in-between clearly labeled</div>
+          </div>
+        </div>
+      </section>
+
+      {/* Bias Meter Preview */}
+      <section className="bg-slate-900/40 py-12 px-6">
+        <div className="max-w-2xl mx-auto text-center">
+          <h3 className="text-2xl font-bold mb-4 text-white">🔎 Bias Meter Preview</h3>
+          <p className="text-slate-400 mb-6 text-sm">
+            Every article will include a label indicating its likely bias so you can read with full context.
+          </p>
+          <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+            <div className="text-sm text-slate-300 mb-2">"Govt announces ₹5 lakh cr startup fund..."</div>
+            <div className="relative w-full h-2 bg-slate-700 rounded-full">
+              <div className="absolute left-[25%] w-1 h-6 bg-blue-400 rounded-sm"></div>
+              <div className="absolute left-[50%] w-1 h-6 bg-gray-400 rounded-sm"></div>
+              <div className="absolute left-[75%] w-1 h-6 bg-red-400 rounded-sm"></div>
+            </div>
+            <div className="flex justify-between mt-2 text-xs text-slate-400 px-1">
+              <span>Left</span>
+              <span>Center</span>
+              <span>Right</span>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-6 border-t border-slate-800">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center">
-                <Brain className="w-4 h-4 text-white" />
-              </div>
-              <span className="text-lg font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-                Briefly News
-              </span>
-            </div>
-            <div className="text-slate-400 text-sm">
-              © 2024 Briefly News. Powered by advanced artificial intelligence.
-            </div>
+      <footer className="py-8 px-6 border-t border-slate-800 text-center text-slate-500 text-sm">
+        <div className="flex justify-center items-center space-x-6 mb-4 flex-wrap">
+          <div className="flex items-center space-x-1">
+            <Star className="w-4 h-4 text-yellow-400 fill-current" />
+            <span>Launching Fall 2025</span>
+          </div>
+          <div className="flex items-center space-x-1">
+            <Users className="w-4 h-4" />
+            <span>Join the first 1000 testers</span>
+          </div>
+          <div className="flex items-center space-x-1">
+            <Shield className="w-4 h-4" />
+            <span>No ads. No tracking. Ever.</span>
           </div>
         </div>
+        © 2025 Briefly. Built for people who want the truth fast.
       </footer>
     </div>
   );
