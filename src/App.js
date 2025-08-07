@@ -9,7 +9,10 @@ import {
   Star,
   Users,
   Shield,
-  Globe,
+  Clock,
+  TrendingUp,
+  Smartphone,
+  CheckCircle,
   Brain
 } from "lucide-react";
 import { motion } from "framer-motion";
@@ -54,7 +57,7 @@ export default function ComingSoon() {
           </Badge>
 
           <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
-            The News, 
+            The News,
             <br />
             <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-400 bg-clip-text text-transparent">
               Without the Noise
@@ -111,6 +114,58 @@ export default function ComingSoon() {
             </div>
             <div className="text-slate-400 text-sm mt-1">left, right, and in-between clearly labeled</div>
           </div>
+        </div>
+      </section>
+
+      {/* Why Choose Briefly */}
+      <section className="bg-slate-900/40 py-20 px-6">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+            <h2 className="text-4xl font-bold mb-4">
+              Why Choose{" "}
+              <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+                Briefly News?
+              </span>
+            </h2>
+            <p className="text-slate-300 text-lg mb-6">
+              Don't get lost in the noise. Our AI-powered platform delivers exactly what you need to know.
+            </p>
+            <div className="space-y-4 text-slate-300">
+              <div className="flex items-center space-x-3">
+                <Clock className="w-5 h-5 text-blue-400" />
+                <span>Save 90% of your research time</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <TrendingUp className="w-5 h-5 text-cyan-400" />
+                <span>Track emerging AI trends before they go mainstream</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Shield className="w-5 h-5 text-green-400" />
+                <span>Verified sources and fact-checked content</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Smartphone className="w-5 h-5 text-purple-400" />
+                <span>Perfect mobile experience for reading on-the-go</span>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-slate-800/60 border border-slate-700 rounded-xl p-6"
+          >
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-slate-300 text-sm">Today's AI Digest</h3>
+              <Badge className="bg-green-500/20 text-green-400">Live</Badge>
+            </div>
+            <div className="space-y-3 text-sm text-slate-300">
+              <div className="p-3 bg-slate-700/30 rounded-md">🔹 OpenAI announces breakthrough in reasoning models</div>
+              <div className="p-3 bg-slate-700/30 rounded-md">🔹 Google's new AI chip outperforms competitors by 40%</div>
+              <div className="p-3 bg-slate-700/30 rounded-md">🔹 MIT researchers solve AI alignment challenge</div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
